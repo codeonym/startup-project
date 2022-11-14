@@ -1,9 +1,7 @@
-doctype 
-html 
+doctype html
+-var $pageName="homepage";
+html(lang="en")
     head
-        include ./pug/components/links.pug
+        include pug/layouts/links.pug
     body 
-        div.container 
-            h3 helloh
-            p hello from div reload2
-        include ./pug/components/scripts.pug
+        include pug/layouts/header.pug

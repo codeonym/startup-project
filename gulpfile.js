@@ -28,7 +28,7 @@ gulp.task("html", function () {
 
 //css task
 gulp.task("css", function () {
-    return  gulp.src("./src/css/*.scss")
+    return  gulp.src(["./src/css/**/*.scss","./src/css/**/*.css"])
             .pipe(sourcemaps.init())
             .pipe(sass({outputStyle:'compressed'}))
             .pipe(prefix())
