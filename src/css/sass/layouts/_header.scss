@@ -1,0 +1,91 @@
+@use "../variables/colors" as *;
+@use "../variables/transitions" as *;
+@use "../variables/fontSize" as *;
+.header-main {
+    height:fit-content;
+    .half-1{
+        background-color:$primary-dark !important;
+        .container {
+            background-color:$primary !important;
+            & > a{
+                width: 80px;
+                position: relative;
+                & > img {
+                    width:100%;
+                    color:$primary-text !important;
+                }
+            }
+            .nav {
+                .nav-link {
+                    width:120px;
+                    &:hover{
+                        color:$secondary-light !important;
+                    }
+                    }
+                }
+            }
+        }
+    .half-2 {
+        background-color:$primary-dark !important;
+        position:relative;
+        min-height:60px;
+        .container {
+            background-color:$secondary !important;
+            min-height:55px;
+            position:relative;
+            color:$secondary-text !important;
+            form {
+                [type="search"] {
+                    background-color:transparent;
+                    color:$secondary-text !important;
+                    text-align: center;
+                    border:none;
+                    box-shadow:0 0 2px 2px $secondary-light;
+                    &:focus {
+                        outline:0px ;
+                        box-shadow: none;
+                        transition:$normal;
+                        position:relative;
+                        border:2px solid $secondary-light;
+                        &::placeholder {
+                            position:absolute;
+                            transform:translate(-10%,-10%);
+                            font-size:$smallFont;
+                            transition:$normal;
+                        }
+                    }
+                    &::placeholder {
+                        text-align: center;
+                        color:$secondary-text !important;
+                    }
+                }
+            }
+            .text-end {
+                flex-wrap: wrap;
+                flex-shrink: 0;
+                max-width:100% !important;
+                button {
+                    background-color:transparent ;
+                    width:120px;
+                    border:2px solid;
+                    &:first-child {
+                        color:$loginColor;
+                        border-color:$loginColor;
+                        &:hover {
+                            background-color: $loginColor;
+                            color:$primary-text;
+                        }
+                    }
+                    &:last-child {
+                        color:$signupColor;
+                        border-color:$signupColor;
+                        &:hover {
+                            background-color: $signupColor;
+                            color:$primary-text;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    };
