@@ -1,5 +1,10 @@
-@mixin flx {
+@mixin flx($pos) {
     display:flex;
     align-items:center;
-    justify-content:center;
+    @if $pos=='' {
+        justify-content:center;
+    }
+    @else {
+        justify-content:$pos;
+    }
 }

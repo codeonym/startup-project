@@ -19,13 +19,14 @@
     "gulp-pug": "^5.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.6.1"
   },
   "dependencies": {
     "sass": "^1.56.1",
     "static-server": "^2.2.1"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 versions",
     "> 2%"
   ]
