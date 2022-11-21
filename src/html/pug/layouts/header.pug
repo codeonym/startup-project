@@ -1,37 +1,32 @@
 header.header-main
-    .px-3.py-2.text-bg-dark.half-1
-        .container.d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start
-            a.logo-head.d-flex.align-items-center.my-2.my-lg-0.me-lg-auto.text-white.text-decoration-none(href='#')
-                img(src='./assets/img/logo.svg').me-2
-            ul.nav.col-12.col-lg-auto.my-2.justify-content-center.my-md-0.text-small.color-white
-                li
-                    a.nav-link.text-white.text-center(href='#')
-                        svg.fa.fa-solid.fa-house-user.d-block.mx-auto.mb-1(width='24' height='24')
-                        |                 Home
-                li
-                    a.nav-link.text-white.text-center(href='#')
-                        svg.fa.fa-solid.fa-gauge.d-block.mx-auto.mb-1(width='24' height='24')
-                        |                 Dashboard
-                li
-                    a.nav-link.text-white.text-center(href='#')
-                        svg.fa.fa-solid.fa-hand-holding-dollar.d-block.mx-auto.mb-1(width='24' height='24')
-                        |                Services
-                li
-                    a.nav-link.text-white.text-center(href='#')
-                        svg.fa.fa-solid.fa-people-roof.d-block.mx-auto.mb-1(width='24' height='24')
-                        |                 About Us
-                li
-                    a.nav-link.text-white.text-center(href='#')
-                        svg.fa.fa-solid.fa-gem.d-block.mx-auto.mb-1(width='24' height='24')
-                        |                 Portfolio
-                li
-                    a.nav-link.text-white.text-center(href='#')
-                        svg.fa.fa-phone-volume.d-block.mx-auto.mb-1(width='24' height='24')
-                        |                 Contact Us
-    .py-2.px-3.half-2
-        .container.d-flex.flex-wrap.justify-content-center.align-items-center
-            form.d-flex.col-12.col-lg-auto.mb-2.mb-lg-0.me-lg-auto(role='search')
-                input.form-control(type='search' placeholder='Search...' aria-label='Search')
-            .text-end.d-flex.justify-content-center.align-items-center
-                button.btn.btn-light.me-2(type='button') Login
-                button.btn.btn-primary(type='button') Sign-up
+  .container 
+    .logo 
+      img(src="./assets/img/logo.svg")
+    .links 
+      button.side-bar-btn 
+        svg.fa.fa-solid.fa-bars.fa-2x
+      ul
+        li
+          a.nav-link
+            svg.fa.fa-solid.fa-house-user(width='24' height='24')
+            span Home
+        li
+          a.nav-link
+            svg.fa.fa-solid.fa-gauge(width='24' height='24')
+            span Dashboard
+        li
+          a.nav-link
+            svg.fa.fa-solid.fa-hand-holding-dollar(width='24' height='24')
+            span Services
+        li
+          a.nav-link
+            svg.fa.fa-solid.fa-people-roof(width='24' height='24')
+            span About Us
+        li
+          a.nav-link
+            svg.fa.fa-solid.fa-gem(width='24' height='24')
+            span Portfolio
+        li
+          a.nav-link
+            svg.fa.fa-solid.fa-phone-volume(width='24' height='24')
+            span Contact Us

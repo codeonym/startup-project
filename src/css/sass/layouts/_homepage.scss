@@ -1,0 +1,166 @@
+@use "../variables/colors" as *;
+@use "../variables/transitions" as *;
+@use "../helpers/mixins" as *;
+@use "../components/media_queries" as *;
+
+@include md-screen {
+    .box {
+        width:930px;
+    } 
+}
+.home {
+    background-color:$primary-light;
+    height:100vh;
+    color:$primary-text;
+    .container {
+        @include flx(center);
+        justify-content:space-between;
+        position:relative;
+        height:100%;
+        flex-direction:column;
+        .head-ti { 
+            width:400px;
+            text-align:center;
+            z-index: 99;
+            margin:50px auto;
+            font-size:60px;
+            text-transform:uppercase;
+            font-weight: 800;
+            position:relative;
+            margin-top:100px;
+            &::before {
+                content: "";
+                z-index: -1;
+                @include flx(center);
+                position:absolute;
+                width:10%;
+                height:100%;
+                left:0%;
+                top:50%;
+                transform: translateY(-50%) ;
+                background-color:$secondary-light;
+                border:10px solid $secondary-dark;
+                border-right:0px;
+            }
+            &::after {
+                content: "";
+                z-index: -1;
+                @include flx(center);
+                position:absolute;
+                width:10%;
+                height:100%;
+                right:0%;
+                top:50%;
+                transform: translateY(-50%) ;
+                background-color:$secondary-dark;
+                border:10px solid $secondary-light;
+                border-left:0px;
+            }
+            &:hover {
+                &::before ,&::after {
+                    animation: expandWidth 0.5s ease-in-out alternate;
+                }
+                @keyframes expandWidth {
+                    0% {
+                        width:10%;
+                    }50% {
+                        width:50%;
+                    }100%{
+                        width:10%;
+                    }
+                }
+            }
+        }
+        .box {
+            display:none;
+            position:relative;
+            transform:translateX(500%);
+            z-index: 1;
+            height:500px;
+            min-width:400px;
+            background-color:$primary;
+            svg {
+                width:30px;
+                opacity: 0.3;
+                position: absolute;
+                top:50%;
+                transform: translateY(-50%);
+                &:first-of-type {
+                    left:-15px;
+                }
+                &:last-child {
+                    right:-15px;
+                }
+                &:hover {
+                    transform: translateY(-50%) scale(1.2);
+                    opacity: 0.7;
+                    transition: all $normal;
+                }
+            }
+            &::before {
+                content: "";
+                z-index: -1;
+                @include flx(center);
+                position:absolute;
+                width:300px;
+                height:300px;
+                left:-30px;
+                top:-30px;
+                background-color:$secondary-light;
+                border:10px solid $secondary-dark;
+                border-right:0px;
+                border-bottom:0px;
+                box-shadow: 5px 5px 9px 0px $primary-dark;
+            }
+            &::after {
+                content: "";
+                z-index: -1;
+                @include flx(center);
+                position:absolute;
+                width:300px;
+                height:300px;
+                right:-30px;
+                bottom:-30px;
+                background-color:$secondary-dark;
+                border:10px solid $secondary-light;
+                border-left:0px;
+                border-top:0px;
+                box-shadow: 3px 4px 11px 0px $primary-dark;
+            }
+            &.indexed {
+                display:block;
+                flex-shrink: 0;
+                transition: all $normal;
+                transform: translateX(0%);
+                animation: hoverIn 0.8s ease-in-out alternate;
+                @keyframes hoverIn {
+                    0%{
+                        transform: translateY(-15px)
+                    }100%{
+                        transform: translateY(0%)
+                    }
+                }
+            }
+            &.hidden {
+                display: none;
+                transition: all $normal;
+                transform: translateX(500%);
+            }
+            .card {
+                @include flx(center);
+                background-color: $primary;
+                width: 100%;
+                height: 100%;
+                box-shadow: 0px 0px 4px 1px $primary-dark;
+            }
+        }
+        .desc {
+            text-align: center;
+            padding-top:50px;
+            max-width:600px;
+            line-height: 1.6;
+            padding-left:30px;
+            padding-right:30px;
+        }
+    }
+}

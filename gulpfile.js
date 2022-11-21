@@ -39,9 +39,9 @@ gulp.task("css", function () {
 
 //scripts task
 gulp.task("scripts",function(){
-    return gulp.src("./src/js/*.js")
+    return gulp.src("./src/js/**/*.js")
     .pipe(concat("main.js"))
-    .pipe(uglify("."))
+    .pipe(minify(""))
     .pipe(gulp.dest("./dist/js"));
 });
 // connect task
@@ -59,6 +59,7 @@ gulp.task('connect', function() {
     gulp.watch('./src/css/**/*.scss', gulp.series("css"));
     gulp.watch('./src/css/*.scss', gulp.series("css"));
     gulp.watch('./src/js/*.js', gulp.series("scripts"));
+    gulp.watch('./src/js/**/*.js', gulp.series("scripts"));
   });
    
   gulp.task('default', gulp.parallel(['connect','watch']));

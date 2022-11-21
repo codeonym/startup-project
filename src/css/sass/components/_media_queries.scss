@@ -1,0 +1,16 @@
+@use "../variables/queries" as *;
+@mixin xs-screen {
+  @media (min-width:$xs-screen) { @content}
+}
+@mixin sm-screen {
+  @media (min-width:$sm-screen) { @content}
+}
+@mixin md-screen {
+  @media (min-width:$md-screen) { @content}
+}
+@mixin lg-screen {
+  @media (min-width:$lg-screen) { @content}
+}
+@mixin xl-screen {
+  @media (min-width:$xl-screen) { @content}
+}

@@ -1,6 +1,39 @@
 @use "../variables/transitions" as *;
+@use "../variables/paddings" as *;
+@use "../components/media_queries" as *;
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
+body {
+    position:relative;
+}
+section {
+  padding-top:$section-padding;
+  padding-bottom:$section-padding;
+}
+@include sm-screen {
+    .container {
+      padding-left:$sm-padding;
+      padding-right:$sm-padding;
+    }
+  }
+  @include md-screen {
+    .container {
+      padding-left:$md-padding;
+      padding-right:$md-padding
+    }
+  }
+  @include lg-screen {
+    .container {
+      padding-left:$lg-padding;
+      padding-right:$lg-padding;
+    }
+  }
+  @include xl-screen {
+    .container {
+      padding-left:$xl-padding;
+      padding-right:$xl-padding;
+    }
+  }
