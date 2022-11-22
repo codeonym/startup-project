@@ -1,4 +1,7 @@
 @use "../variables/queries" as *;
+@mixin xxs-screen {
+  @media (max-width:$xs-screen) { @content}
+}
 @mixin xs-screen {
   @media (min-width:$xs-screen) { @content}
 }
