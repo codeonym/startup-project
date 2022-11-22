@@ -75,9 +75,9 @@ function checkScreenSize() {
       // }, 10000);
     });
   
-    setTimeout(function () {
+    setInterval(function () {
       $(".slider-item.indexed .next").click();
-    }, 10000);
+    }, 3000);
   });
 
 
