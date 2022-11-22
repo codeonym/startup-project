@@ -6,6 +6,17 @@
 @include md-screen {
     .box {
         width:930px;
+        &::before,&::after {
+            @include flx(center);
+        }
+    } 
+    
+}
+@include xxs-screen{
+    .box {
+        &::before,&::after {
+            display:none ;
+        }
     } 
 }
 .home {
@@ -100,7 +111,6 @@
             &::before {
                 content: "";
                 z-index: -1;
-                @include flx(center);
                 position:absolute;
                 width:300px;
                 height:300px;
@@ -115,7 +125,6 @@
             &::after {
                 content: "";
                 z-index: -1;
-                @include flx(center);
                 position:absolute;
                 width:300px;
                 height:300px;
