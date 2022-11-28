@@ -1,47 +1,84 @@
 @use "../variables/colors" as *;
+@use "../variables/fontSize" as *;
 @use "../variables/transitions" as *;
+@use "../variables/paddings" as *;
 @use "../helpers/mixins" as *;
 @use "../components/media_queries" as *;
+@use "../components/radiant_circle" as *;
+@use "../variables/borderradius" as *;
+@use "../components/section_header" as *;
+@use "../components/slide_in_effect" as *;
 
 @include md-screen {
-    .box {
-        width:930px;
+    home {
+      .box {
         &::before,&::after {
             @include flx(center);
         }
-    } 
-    
+      } 
+    }
 }
-@include xxs-screen{
+@include lg-screen {
+    .home {
+      .box {
+        width:900px;  
+      } 
+    }
+}
+@include sm-screen {
+    .home {
+      .head-ti {
+        width:400px;
+        margin:50px auto;
+        font-size: $header-font;
+      }
+    }
+}
+@include xs-screen{
+    .home {
+      .head-ti {
+        width:300px;
+        margin:50px 0px;
+        font-size: $header-font-secondary;
+      }
     .box {
+      min-width: 300px;
         &::before,&::after {
             display:none ;
         }
-    } 
+      } 
+    }
 }
+
 .home {
-    background-color:$primary-light;
-    height:100vh;
     color:$primary-text;
     .container {
-        @include flx(center);
-        justify-content:space-between;
         position:relative;
-        height:100%;
-        flex-direction:column;
-        .head-ti { 
-            width:400px;
+        @include flx(space-between);
+        flex-direction: column;
+        .head-ti {
             text-align:center;
             z-index: 99;
             margin:50px auto;
-            font-size:60px;
             text-transform:uppercase;
             font-weight: 800;
             position:relative;
             margin-top:100px;
+            span {
+                color: $highlight-color-red;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 120px;
+                z-index: -1;
+                text-shadow: 0 0 20px $primary-dark;
+                width: 100%;
+                transition: all $normal ease-in-out;
+            }
             &::before {
                 content: "";
-                z-index: -1;
+                z-index: 1;
                 @include flx(center);
                 position:absolute;
                 width:10%;
@@ -49,13 +86,14 @@
                 left:0%;
                 top:50%;
                 transform: translateY(-50%) ;
-                background-color:$secondary-light;
-                border:10px solid $secondary-dark;
+                background-color:transparent;
+                border:10px solid $secondary-light;
                 border-right:0px;
+                box-shadow: -7px 9px 5px 0px #000062;
             }
             &::after {
                 content: "";
-                z-index: -1;
+                z-index: 1;
                 @include flx(center);
                 position:absolute;
                 width:10%;
@@ -63,22 +101,15 @@
                 right:0%;
                 top:50%;
                 transform: translateY(-50%) ;
-                background-color:$secondary-dark;
+                background-color:transparent;
                 border:10px solid $secondary-light;
                 border-left:0px;
+                box-shadow: 7px 9px 5px 0px #000062;
             }
-            &:hover {
-                &::before ,&::after {
-                    animation: expandWidth 0.5s ease-in-out alternate;
-                }
-                @keyframes expandWidth {
-                    0% {
-                        width:10%;
-                    }50% {
-                        width:50%;
-                    }100%{
-                        width:10%;
-                    }
+            &:hover {              
+                span {
+                    z-index: 1;
+                    transition: all $normal ease-in-out;
                 }
             }
         }
@@ -88,10 +119,10 @@
             transform:translateX(500%);
             z-index: 1;
             height:500px;
-            min-width:400px;
             background-color:$primary;
-            svg {
+            > svg {
                 width:30px;
+                z-index: 3;
                 opacity: 0.3;
                 position: absolute;
                 top:50%;
@@ -156,11 +187,60 @@
                 transform: translateX(500%);
             }
             .card {
-                @include flx(center);
+                @include flx(flex-end);
                 background-color: $primary;
                 width: 100%;
                 height: 100%;
                 box-shadow: 0px 0px 4px 1px $primary-dark;
+                position: relative;
+                transition: all $normal;;
+                flex-direction: column;
+                overflow: hidden;
+                img {
+                    width:100%;
+                    position: absolute;
+                    top:50%;
+                    left:50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 1;
+                    transition:all $normal;
+                    filter: grayscale(1) opacity(0.25);
+                }
+                h3 {
+                    z-index: 2;
+                    width:100%;
+                    @include flx(center);
+                    font-size: $largerFont;
+                    text-align: center;
+                    position:relative;
+                    svg {
+                        padding:10px;
+                        font-size: 30px;
+                        color:$highlight-color-red;
+                    }
+                }
+                div {
+                    z-index: 2;
+                    padding:20px;
+                    width:100%;
+                    p{
+                        max-width:500px;
+                        margin:5px auto;
+                    };
+                    text-align: center;
+                }
+                &:hover {
+                    justify-content: flex-end;
+                    transition:all $normal;
+                    img{
+                        transition:all $normal;
+                        transform:translate(-50%, -50%) scale(1.25) rotate(10deg);
+                        filter:grayscale(0) opacity(1);
+                    }
+                    h3 , div{
+                        background-color: rgba($primary-dark,0.5);
+                        }
+                }
             }
         }
         .desc {
@@ -172,4 +252,219 @@
             padding-right:30px;
         }
     }
+}
+
+.services {
+  position: relative;
+  min-height:100vh;
+    .container {
+      background-color:$secondary-dark;
+      width:100%;
+      @include section-header($highlight-color-silver,$highlight-color-red-dark);
+      .serv-desc {
+        @include slide-in;
+        position: relative;
+        width:100%;
+        background-color:$middle;
+        color:$primary-dark;
+        padding:$big-title-padding;
+        margin-bottom:20px;
+        border-radius:$box;
+        font-size: $largeFont;
+        font-weight:bold;
+        background-image: linear-gradient(90deg,$highlight-color-silver, transparent);
+        svg {
+          color:$highlight-color-red-dark;
+          padding-right:5px
+        }
+      }
+      .boxes {
+        
+        @include slide-in;
+        @include radiant_circle($highlight-color-red,70px) {
+          z-index:-1
+        };
+        display:grid;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fill  ,minmax(300px ,1fr));
+        .box {
+          @include flx(center);
+          flex-direction: column;
+          background-color:$middle;
+          border-radius: $box;
+          overflow: hidden;
+          transition: all $normal;
+          svg {
+            transition: all $normal;
+            color:$primary-dark;
+            padding:$small-icon-padding;
+          }
+          .desc {
+            padding:15px;
+            background-color:$primary-dark;
+            h3 {
+              padding-bottom:$small-title-padding;
+              font-size: $largeFont;
+            }
+            p {
+              font-size:$smallFont;
+              line-height: 1.7;
+            }
+          }
+          &:hover {
+            position: relative;
+            transform: scale(1.05);
+            transition:$normal;
+            background-color:$primary-dark;
+            box-shadow: -3px 3px 16px 0px $primary-dark;
+            svg {
+              position: absolute;
+              top:50%;
+              left:50%;
+              z-index: -1;
+              color:$primary-text;
+              opacity:0.5;
+              transform:translate(-50%, -50%) scale(5);
+              
+            }
+            .desc {
+              h3 {
+                margin-top:20px;
+                font-size: $box-title-font;
+                text-transform: uppercase;
+                letter-spacing:5px;
+                text-align: center;
+                transition: all $normal;
+              }
+              height: 100%;
+              background-color:transparent;
+            }
+          }
+        }
+      }
+    }
+}
+
+.portfolio {
+  .container {
+    background-color:$primary-light;
+    width:100%;
+    @include section-header($highlight-color-azure,$highlight-color-red-dark);
+    .proj-desc {
+      @include slide-in;
+      position: relative;
+      width:100%;
+      background-color:$middle;
+      color:$primary-dark;
+      padding:$big-title-padding;
+      margin-bottom:20px;
+      border-radius:$box;
+      font-size: $largeFont;
+      font-weight:bold;
+      background-image: linear-gradient(90deg,$highlight-color-silver, transparent);
+      svg {
+        color:$highlight-color-red-dark;
+        padding-right:5px
+      }
+    }
+    .boxes {
+      @include slide-in;
+      @include radiant_circle($highlight-color-silver,70px) {
+        z-index:-1
+      };
+      display:grid;
+      justify-content: center;
+      align-items: center;
+      justify-items: center;
+      grid-gap: 20px;
+      grid-template-columns: repeat(auto-fill  ,minmax(350px ,1fr));
+      .card {
+        @include flx(space-evenly);
+        flex-direction: column;
+        min-height:350px;
+        color:$middle;
+        overflow: hidden;
+        transition: all $normal;
+        position: relative;
+        background-color:$highlight-color-black;
+        & > * {
+          padding: $box;
+        }
+        img {
+          height:80px;
+          
+        }
+        svg {
+          transition: all $normal;
+          position: absolute;
+          bottom:30px;
+          right:30px;
+          transform: translate(50%, 50%);
+        }
+        .desc {
+          padding:15px;
+          h3 {
+            padding-bottom:$small-title-padding;
+            font-size: $largeFont;
+            position: relative;
+            &::before {
+              content: "\f841";
+              font-family: "fontawesome";
+              width:15px;
+              height:15px;
+            }
+          }
+          p {
+            font-size:$smallFont;
+            line-height: 1.7;
+          }
+          a {
+            display:block;
+            width:200px;
+            height:40px;
+            @include flx(center);
+            background-color:$middle; 
+            border-radius: $box;
+            text-decoration: none;
+            margin:5px auto;
+            &:hover {
+              text-decoration:none;
+            }
+          }
+        }
+        &:hover {
+          position: relative;
+          transform: scale(1.05);
+          transition:$normal;
+          background-color:$primary-dark;
+          box-shadow: -3px 3px 16px 0px $primary-dark;
+          svg {
+            position: absolute;
+            top:50%;
+            left:50%;
+            z-index: -1;
+            color:$primary-text;
+            opacity:0.5;
+            transform:translate(-50%, -50%) scale(5);
+            
+          }
+          .desc {
+            h3 {
+              margin-top:20px;
+              font-size: $box-title-font;
+              text-transform: uppercase;
+              letter-spacing:5px;
+              text-align: center;
+              transition: all $normal;
+            }
+            height: 100%;
+            background-color:transparent;
+          }
+        }
+      }
+    }
+  }
 }

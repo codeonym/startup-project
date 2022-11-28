@@ -1,0 +1,17 @@
+@mixin radiant_circle($color,$width){
+  &::before {
+    content:'';
+    width:30px;
+    height:30px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border:$width solid rgba($color , 0.4);
+    border-radius: 50%;
+    box-shadow: 0 0 1px $width rgba($color , 0.2) ,
+                inset 0 0 0px $width rgba($color , 0.7);
+    @content
+
+  }
+}

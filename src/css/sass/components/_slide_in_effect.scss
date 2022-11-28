@@ -1,0 +1,21 @@
+@use "../variables/transitions" as *;
+@mixin slide-in {
+  &.slide {
+    &.slide-out {
+      transform:translateX(-500%);
+    }
+    &.slide-in{
+      transition: all $normal;
+      animation:visible $normal;
+      transform:translateX(0%);
+      @keyframes visible {
+        from{
+          transform:translateX(-500%);
+        }
+        to {
+          transform:translateX(0%);
+        }
+      }
+    }
+  }
+}

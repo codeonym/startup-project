@@ -1,0 +1,64 @@
+@use "../variables/colors" as *;
+@use "../variables/fontSize" as *;
+@use "../variables/paddings" as *;
+@use "../variables/transitions" as *;
+@use "../helpers/mixins" as *;
+@use "../variables/borderradius" as *;
+@use "./slide_in_effect" as *;
+@mixin section_header($col-box-1,$col-box-2) {
+  .section-header {
+    z-index:100;
+    @include flx(flex-start);
+    @include slide-in;
+    position: absolute;
+    min-width:370px;
+    left:0%;
+    height:72px;
+    width:50%;
+    .icon {
+      @include flx(center);
+      width:100px;
+      background-color: $col-box-1;
+      height:100%;
+      z-index: 1;
+      box-shadow: -12px 8px 17px 0px black;
+    }
+    h1 {
+      margin-left:10px;
+      transform:translateX(0%);
+      @include flx(center);
+      width:calc(100% - 100px);
+      background-color: $col-box-2;
+      height: 100%;
+      border-top-right-radius: $small-box;
+      border-bottom-right-radius: $small-box;
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      text-shadow: -1px 1px 6px black;
+      box-shadow: -12px 8px 17px 0px black;
+      animation:  duration timing-function delay iteration-count direction fill-mode;
+      @keyframes hide {
+        from {
+          transform:translateX(0%);
+        }to {
+          transform:translateX(-500%);
+        }
+      }
+    }
+    &.out {
+      position:fixed;
+      top:72px;
+      .icon {
+        border-top-right-radius: $small-box;
+        border-bottom-right-radius: $small-box;
+      }
+      h1 {
+        transform:translateX(-500%);
+        animation: hide $normal;
+      }
+    }
+    & +  div{
+      margin-top:140px;
+    }
+  }
+}

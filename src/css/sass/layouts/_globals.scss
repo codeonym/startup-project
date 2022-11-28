@@ -1,17 +1,63 @@
 @use "../variables/transitions" as *;
 @use "../variables/paddings" as *;
 @use "../components/media_queries" as *;
+@use "../variables/colors" as *;
+@use "../helpers/mixins" as *;
+// @use "../components/radiant_circle" as *;
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
+    font-family: "montsrt";
 }
 body {
     position:relative;
+    height:5000px;
+    background-color:$primary-light;
+    color:$primary-text;
+    .scroll-bar {
+      position:fixed;
+      top:50%;
+      right:50px;
+      padding:10px;
+      z-index: 99;
+      transform: translate(50%,-50%) rotate(90deg);
+      width:300px;
+      height:30px;
+      @include flx(center);
+      input[type="range"] {
+        width:100%;
+        z-index: 1;
+      }
+    }
+}
+//reset navbar 
+::-webkit-scrollbar {
+  width:0px;
+
 }
 section {
-  padding-top:$section-padding;
-  padding-bottom:$section-padding;
+  min-height: 100vh;
+  .container {
+    position: relative;
+    padding-top:$section-padding;
+    padding-bottom:$section-padding;
+  }
+  min-height: 100vh;
+  @include flx(center);
+}
+//media queries 
+@include xxs-screen {
+  .container {
+    padding-left:$xxs-padding;
+    padding-right:$xxs-padding;
+  }
+}
+@include xs-screen {
+  .container {
+    padding-left:$xs-padding;
+    padding-right:$xs-padding;
+  }
 }
 @include sm-screen {
     .container {
@@ -37,3 +83,17 @@ section {
       padding-right:$xl-padding;
     }
   }
+  @font-face {
+    font-family: "montsrt";
+    src: url("../assets/fonts/montserrat.ttf");
+  }
+  // * //when needed uncomment it .
+
+  // @font-face {
+  //   font-family: "abril";
+  //   src: url("../assets/fonts/abril.ttf");
+  // }
+  // @font-face {
+  //   font-family: "librebodoni";
+  //   src: url("../assets/fonts/librebodoni.ttf");
+  // }
